@@ -1,0 +1,89 @@
+apply plugin: 'com.android.application'
+apply plugin: 'com.google.ar.sceneform.plugin'
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "vyas.kaushal.ardemo"
+        minSdkVersion 24
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+
+    implementation 'com.google.ar:core:1.11.0'
+    implementation 'com.google.ar.sceneform.ux:sceneform-ux:1.11.0'
+    implementation "com.google.ar.sceneform:core:1.11.0"
+
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+}
+
+
+sceneform.asset('sampledata/Earth/Earth.gltf',
+        'default',
+        'sampledata/Earth/Earth.sfa',
+        'src/main/assets/Earth')
+
+sceneform.asset('sampledata/Jupiter/Jupiter.gltf',
+        'default',
+        'sampledata/Jupiter/Jupiter.sfa',
+        'src/main/assets/Jupiter')
+
+sceneform.asset('sampledata/Mars/Mars.gltf',
+        'default',
+        'sampledata/Mars/Mars.sfa',
+        'src/main/assets/Mars')
+
+sceneform.asset('sampledata/Mercury/Mercury.gltf',
+        'default',
+        'sampledata/Mercury/Mercury.sfa',
+        'src/main/assets/Mercury')
+
+sceneform.asset('sampledata/Moon/Luna.gltf',
+        'default',
+        'sampledata/Moon/Luna.sfa',
+        'src/main/assets/Luna')
+
+sceneform.asset('sampledata/Neptune/Neptune.gltf',
+        'default',
+        'sampledata/Neptune/Neptune.sfa',
+        'src/main/assets/Neptune')
+
+sceneform.asset('sampledata/Saturn/Saturn.gltf',
+        'default',
+        'sampledata/Saturn/Saturn.sfa',
+        'src/main/assets/Saturn')
+
+sceneform.asset('sampledata/Sun/Sol.gltf',
+        'default',
+        'sampledata/Sun/Sol.sfa',
+        'src/main/assets/Sol')
+
+sceneform.asset('sampledata/Uranus/Uranus.gltf',
+        'default',
+        'sampledata/Uranus/Uranus.sfa',
+        'src/main/assets/Uranus')
+
+sceneform.asset('sampledata/Venus/Venus.gltf',
+        'default',
+        'sampledata/Venus/Venus.sfa',
+        'src/main/assets/Venus')
