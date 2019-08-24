@@ -1,3 +1,77 @@
 ﻿@{
     ViewBag.Title = "Dementia Care";
 }
+
+<div class="container-fluid no-padding">
+    <div class="row no-margin">
+        <div class="col-12 no-padding full-height">
+            <img src="~/Images/background.jpg" class="img-fit" alt="Dementia Care" />
+
+            <div class="sticky-top abs-position full-width">
+                <img src="~/Images/title.png" class="img-center" alt="" />
+            </div>
+        </div>
+    </div>
+    <div class="row no-margin">
+        <div class="col-12 no-padding">
+            <div class="card" style="border-top: 0px; border-left: 0px; border-right: 0px;">
+                <div class="card-text">
+                    <h4 class="text-break text-center calibri-font dc-margin-padding">
+                        Dementia is a major health problem in Australia. It has profound consequences for the health and quality of
+                        life of people with the condition, as well as for their families and friends.
+                    </h4>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row no-margin">
+        <div class="col-12 patients-chart">
+            <div id="dementiaPopulationChart"></div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    Highcharts.chart('dementiaPopulationChart', {
+        chart: {
+            type: 'area'
+        },
+        title: {
+            text: 'Number of Dementia Patients in Australia'
+        },
+        xAxis: {
+            categories: ['2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020'],
+            tickmarkPlacement: 'on',
+            title: {
+                enabled: false
+            }
+        },
+        yAxis: {
+            min: 100000,
+            title: {
+                text: 'Patients'
+            }
+        },
+        tooltip: {
+            split: true
+        },
+        plotOptions: {
+            area: {
+                stacking: 'normal',
+                lineColor: '#666666',
+                lineWidth: 1,
+                marker: {
+                    lineWidth: 1,
+                    lineColor: '#666666'
+                }
+            }
+        },
+        series: [{
+            name: 'Male',
+            data: [113300, 118100, 122600, 127000, 131700, 136600, 141600, 146600, 151700, 157000]
+        }, {
+            name: 'Female',
+            data: [184700, 193200, 199100, 204900, 211100, 217200, 223500, 229700, 236100, 242800]
+        }]
+    });
+</script>

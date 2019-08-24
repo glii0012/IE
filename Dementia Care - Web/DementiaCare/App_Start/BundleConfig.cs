@@ -22,6 +22,11 @@ namespace DementiaCare
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/highcharts").Include(
+                      "~/Highcharts/highcharts.js",
+                      "~/Highcharts/modules/exporting.js",
+                      "~/Highcharts/modules/export-data.js"));
+
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
