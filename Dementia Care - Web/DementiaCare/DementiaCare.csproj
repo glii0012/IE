@@ -599,7 +599,10 @@
     <Content Include="Highcharts\themes\sunset.js" />
     <Content Include="Highcharts\themes\sunset.src.js" />
     <Content Include="Images\background.jpg" />
+    <Content Include="Images\first.jpg" />
     <Content Include="Images\info.jpg" />
+    <Content Include="Images\second.jpg" />
+    <Content Include="Images\third.jpg" />
     <Content Include="Images\title.png" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -623,12 +626,6 @@
     <Content Include="Scripts\esm\popper.js.map" />
     <Content Include="Scripts\esm\popper-utils.min.js.map" />
     <Content Include="Scripts\esm\popper-utils.js.map" />
-    <Content Include="Fonts\Calibri Regular.ttf" />
-    <Content Include="Fonts\Calibri Light Italic.ttf" />
-    <Content Include="Fonts\Calibri Light.ttf" />
-    <Content Include="Fonts\Calibri Italic.ttf" />
-    <Content Include="Fonts\Calibri Bold Italic.ttf" />
-    <Content Include="Fonts\Calibri Bold.TTF" />
     <Content Include="Highcharts\css\annotations\popup.scss" />
     <Content Include="Highcharts\css\highcharts.scss" />
     <Content Include="Highcharts\css\stocktools\gui.scss" />
@@ -709,6 +706,7 @@
     <Content Include="Highcharts\themes\sand-signika.js.map" />
     <Content Include="Highcharts\themes\skies.js.map" />
     <Content Include="Highcharts\themes\sunset.js.map" />
+    <Content Include="Fonts\Aquatico-Regular.otf" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
