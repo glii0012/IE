@@ -707,7 +707,10 @@
     <Content Include="Highcharts\themes\sand-signika.js.map" />
     <Content Include="Highcharts\themes\skies.js.map" />
     <Content Include="Highcharts\themes\sunset.js.map" />
-    <Content Include="Fonts\Aquatico-Regular.otf" />
+    <Content Include="Content\Fonts\Aquatico-Regular.otf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="Properties\PublishProfiles\DementiaCare - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

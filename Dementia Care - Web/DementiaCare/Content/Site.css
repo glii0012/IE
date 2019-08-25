@@ -1,6 +1,6 @@
 ﻿@font-face {
     font-family: 'CustomFont';
-    src: url('../Fonts/Aquatico-Regular.otf');
+    src: url('Fonts/Aquatico-Regular.otf');
 }
 
 html, body {
