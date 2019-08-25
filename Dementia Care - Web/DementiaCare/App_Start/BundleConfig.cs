@@ -24,6 +24,7 @@ namespace DementiaCare
 
             bundles.Add(new ScriptBundle("~/bundles/highcharts").Include(
                       "~/Highcharts/highcharts.js",
+                      "~/Highcharts/highcharts-more.js",
                       "~/Highcharts/modules/exporting.js",
                       "~/Highcharts/modules/export-data.js"));
 

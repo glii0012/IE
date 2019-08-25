@@ -34,8 +34,8 @@
             <div class="card bg-dark" style="border:0px; border-radius: 0px;">
                 <div class="card-text">
                     <h5 class="text-white text-break text-center calibri-font dc-margin-padding">
-                        At present, there are 400,833 elders living with dementia in Australia and this number is projected to reach 
-                        1.1 million people by 2056. Majority of this people – approximately 75% - live in community homes and 90% of 
+                        At present, there are 400,833 elders living with dementia in Australia and this number is projected to reach
+                        1.1 million people by 2056. Majority of this people – approximately 75% - live in community homes and 90% of
                         them are cared by family members (spouse/children), where most patients need self-care assistance.
                     </h5>
                 </div>
@@ -43,27 +43,82 @@
         </div>
     </div>
     <div class="row no-margin">
+        <div class="col-lg-6 patients-chart">
+            <div id="assistanceChart" class="calibri-font"></div>
+        </div>
+        <div class="col-lg-6 patients-chart">
+            <div id="carerChart" class="calibri-font"></div>
+        </div>
+    </div>
+    <div class="row no-margin">
+        <div class="col-12 no-padding">
+            <div class="card bg-dark" style="border:0px; border-radius: 0px;">
+                <div class="card-text">
+                    <h5 class="text-white text-break text-center calibri-font dc-margin-padding">
+                        Our aim is to provide a solution that makes life easier not only for recently diagnosed dementia patients but
+                        also for carers who are part of their daily lives.
+                        <br /><br />
+                        | IT for Social Good |
+                    </h5>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row no-margin">
         <div class="col-lg-4 no-padding">
-            <div class="card" style="border-radius:0px;">
+            <div class="card" style="border: 0px; border-radius:0px;">
                 <img src="~/Images/first.jpg" class="card-img-top" style="border-radius:0px;" alt="Stimulus" />
                 <div class="card-body">
-                    <h5 class="card-title calibri-font">STIMULUS</h5>
+                    <h5 class="card-title calibri-font">&diams; STIMULUS (PAVLOVIAN THEORY)</h5>
+                    <p class="text-break calibri-font">
+                        Pavlovian theory is a learning procedure that involves pairing a stimulus with a conditioned response. Our
+                        solution involves training patients minds to an external stimulus with a preconditioned involuntary cognitive
+                        response. Stimulation include - Being hydrated, having meals and medicine on time.
+                    </p>
                 </div>
             </div>
         </div>
         <div class="col-lg-4 no-padding">
-            <div class="card" style="border-radius:0px;">
+            <div class="card" style="border: 0px; border-radius:0px;">
                 <img src="~/Images/second.jpg" class="card-img-top" style="border-radius:0px;" alt="Stimulus" />
                 <div class="card-body">
-                    <h5 class="card-title calibri-font">PUZZLE</h5>
+                    <h5 class="card-title calibri-font">&diams; PUZZLE</h5>
+                    <p class="text-break calibri-font">
+                        Another part of our solution includes patients solving puzzles, where solution of puzzles is an image/picture
+                        uploaded/selected by carers. The benefit is trying to make patients remember old memories and initiate
+                        conversation between patient and carer.
+                    </p>
                 </div>
             </div>
         </div>
         <div class="col-lg-4 no-padding">
-            <div class="card" style="border-radius:0px;">
+            <div class="card" style="border: 0px; border-radius:0px;">
                 <img src="~/Images/third.jpg" class="card-img-top" style="border-radius:0px;" alt="Stimulus" />
                 <div class="card-body">
-                    <h5 class="card-title calibri-font">AUGMENTED REALITY</h5>
+                    <h5 class="card-title calibri-font">&diams; AUGMENTED REALITY</h5>
+                    <p class="text-break calibri-font">
+                        Lastly, we try creating fun and lively interaction between patients and carers with the use of AR technology.
+                        We use 3D AR objects and place it into real world using smart devices, which are interactable. This will help
+                        create new memories for family members and friends.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row no-margin">
+        <div class="col-12 no-padding">
+            <div class="card" style="border-left: 0px; border-right: 0px; border-radius: 0px;">
+                <img src="~/Images/applogo.png" style="max-width: 250px; display: block; margin: auto;" alt="Play Store" />
+            </div>
+        </div>
+    </div>
+    <div class="row no-margin">
+        <div class="col-12 no-padding">
+            <div class="card bg-dark" style="border:0px; border-radius: 0px;">
+                <div class="card-text">
+                    <h5 class="text-white text-break text-center calibri-font dc-margin-padding">
+                        DEVELOPED &amp; DESIGNED BY AUG.life
+                    </h5>
                 </div>
             </div>
         </div>
@@ -111,6 +166,208 @@
         }, {
             name: 'Female',
             data: [184700, 193200, 199100, 204900, 211100, 217200, 223500, 229700, 236100, 242800]
+        }]
+    });
+
+    Highcharts.chart('assistanceChart', {
+        chart: {
+            type: 'packedbubble',
+            height: '70%'
+        },
+        title: {
+            text: 'Assistance for Dementia Patients living in Community'
+        },
+        tooltip: {
+            useHTML: true,
+            pointFormat: '<b>{point.name}:</b> {point.value} %'
+        },
+        plotOptions: {
+            packedbubble: {
+                minSize: '70%',
+                maxSize: '120%',
+                zMin: 0,
+                zMax: 1000,
+                layoutAlgorithm: {
+                    splitSeries: false,
+                    gravitationalConstant: 0.02
+                },
+                dataLabels: {
+                    enabled: true,
+                    format: '{point.name}',
+                    filter: {
+                        property: 'y',
+                        operator: '>',
+                        value: 70
+                    },
+                    style: {
+                        color: 'black',
+                        textOutline: 'none',
+                        fontWeight: 'normal'
+                    }
+                }
+            }
+        },
+        series: [{
+            name: 'Male',
+            data: [{
+                name: 'Self-Care',
+                value: 62.9
+            }, {
+                name: 'Mobility',
+                value: 79.8
+            },
+            {
+                name: "Communication",
+                value: 38.0
+            },
+            {
+                name: "Health Care",
+                value: 85.7
+            },
+            {
+                name: "Cognitive",
+                value: 59.4
+            },
+            {
+                name: "Chores",
+                value: 46.6
+            },
+            {
+                name: "Maintenance",
+                value: 67.0
+            },
+            {
+                name: "Meal",
+                value: 55.6
+            },
+            {
+                name: "Reading or Writing",
+                value: 51.6
+            },
+            {
+                name: "Transport",
+                value: 83.3
+            }]
+        }, {
+            name: 'Female',
+            data: [{
+                name: 'Self-Care',
+                value: 61.4
+            }, {
+                name: 'Mobility',
+                value: 79.2
+            },
+            {
+                name: "Communication",
+                value: 40.3
+            },
+            {
+                name: "Health Care",
+                value: 82.6
+            },
+            {
+                name: "Cognitive",
+                value: 68.7
+            },
+            {
+                name: "Chores",
+                value: 75.4
+            },
+            {
+                name: "Maintenance",
+                value: 56.5
+            },
+            {
+                name: "Meal",
+                value: 66.3
+            },
+            {
+                name: "Reading or Writing",
+                value: 59.7
+            },
+            {
+                name: "Transport",
+                value: 75.7
+            }]
+        }, {
+            name: 'Total',
+            data: [{
+                name: 'Self-Care',
+                value: 62.1
+            }, {
+                name: 'Mobility',
+                value: 79.5
+            },
+            {
+                name: "Communication",
+                value: 39.2
+            },
+            {
+                name: "Health Care",
+                value: 84.1
+            },
+            {
+                name: "Cognitive",
+                value: 64.1
+            },
+            {
+                name: "Chores",
+                value: 61.1
+            },
+            {
+                name: "Maintenance",
+                value: 61.7
+            },
+            {
+                name: "Meal",
+                value: 61.0
+            },
+            {
+                name: "Reading or Writing",
+                value: 56.6
+            },
+            {
+                name: "Transport",
+                value: 79.5
+            }]
+        }]
+    });
+
+    Highcharts.chart('carerChart', {
+        chart: {
+            type: 'bar',
+            height: '70%'
+        },
+        title: {
+            text: 'Primary Carer Relationship with Patients living in Community, by Age'
+        },
+        xAxis: {
+            categories: ['-45', '45-65', '65+', 'Overall']
+        },
+        yAxis: {
+            min: 0,
+            max: 100,
+            title: {
+                text: 'Percentage of Carers'
+            }
+        },
+        legend: {
+            reversed: true
+        },
+        plotOptions: {
+            series: {
+                stacking: 'normal'
+            }
+        },
+        series: [{
+            name: 'Spouse',
+            data: [43.4, 21.2, 83.9, 56.5]
+        }, {
+            name: 'Childern',
+            data: [0.0, 69.7, 13.7, 36.4]
+        }, {
+            name: 'Other',
+            data: [56.6, 9.2, 2.4, 7.1]
         }]
     });
 </script>

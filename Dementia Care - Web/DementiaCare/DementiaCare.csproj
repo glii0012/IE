@@ -598,6 +598,7 @@
     <Content Include="Highcharts\themes\skies.src.js" />
     <Content Include="Highcharts\themes\sunset.js" />
     <Content Include="Highcharts\themes\sunset.src.js" />
+    <Content Include="Images\applogo.png" />
     <Content Include="Images\background.jpg" />
     <Content Include="Images\first.jpg" />
     <Content Include="Images\info.jpg" />
