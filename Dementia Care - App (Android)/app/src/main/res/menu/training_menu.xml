@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_training_water"
+        android:icon="@drawable/ic_menu_water"
+        android:title="@string/training_water" />
+
+    <item
+        android:id="@+id/nav_training_lunch"
+        android:icon="@drawable/ic_menu_lunch"
+        android:title="@string/training_lunch" />
+
+    <item
+        android:id="@+id/nav_training_dinner"
+        android:icon="@drawable/ic_menu_dinner"
+        android:title="@string/training_dinner" />
+
+    <item
+        android:id="@+id/nav_training_medicine"
+        android:icon="@drawable/ic_menu_medicine"
+        android:title="@string/training_medicine" />
+
+</menu>
