@@ -8,23 +8,23 @@ import android.content.Intent;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
-import vyas.kaushal.dementiacare.LunchActivity;
+import vyas.kaushal.dementiacare.DinnerActivity;
 import vyas.kaushal.dementiacare.R;
 
-public class LunchAlarm extends BroadcastReceiver {
+public class DinnerAlarm extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        Intent lunchIntent = new Intent(context, LunchActivity.class);
+        Intent lunchIntent = new Intent(context, DinnerActivity.class);
         lunchIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
         Notification notification = new NotificationCompat.Builder(context, "DC")
-                .setSmallIcon(R.drawable.ic_menu_lunch)
-                .setContentTitle("IT'S LUNCH TIME")
+                .setSmallIcon(R.drawable.ic_menu_dinner)
+                .setContentTitle("IT'S DINNER TIME")
                 .build();
 
         NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
-        notificationManager.notify(2, notification);
+        notificationManager.notify(3, notification);
 
         context.startActivity(lunchIntent);
     }

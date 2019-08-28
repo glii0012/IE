@@ -16,9 +16,4 @@
         android:icon="@drawable/ic_menu_dinner"
         android:title="@string/training_dinner" />
 
-    <item
-        android:id="@+id/nav_training_medicine"
-        android:icon="@drawable/ic_menu_medicine"
-        android:title="@string/training_medicine" />
-
 </menu>

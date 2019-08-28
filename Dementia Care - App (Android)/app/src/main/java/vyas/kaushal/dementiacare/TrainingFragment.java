@@ -17,7 +17,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import vyas.kaushal.dementiacare.Adapters.TrainingViewPagerAdapter;
 import vyas.kaushal.dementiacare.Training.DinnerFragment;
 import vyas.kaushal.dementiacare.Training.LunchFragment;
-import vyas.kaushal.dementiacare.Training.MedicineFragment;
 import vyas.kaushal.dementiacare.Training.WaterFragment;
 
 public class TrainingFragment extends Fragment {
@@ -65,10 +64,6 @@ public class TrainingFragment extends Fragment {
                         trainingPager.setCurrentItem(2, true);
                         break;
 
-                    case R.id.nav_training_medicine:
-                        trainingPager.setCurrentItem(3, true);
-                        break;
-
                     default: break;
                 }
 
@@ -109,7 +104,6 @@ public class TrainingFragment extends Fragment {
         adapter.addFragment(new WaterFragment());
         adapter.addFragment(new LunchFragment());
         adapter.addFragment(new DinnerFragment());
-        adapter.addFragment(new MedicineFragment());
         viewPager.setAdapter(adapter);
     }
 }
