@@ -1,6 +1,9 @@
 package vyas.kaushal.dementiacare;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
 
@@ -35,6 +38,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         getWindow().setStatusBarColor(Color.WHITE);
         setContentView(R.layout.activity_main);
 
+        createNotificationChannel();
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -52,6 +57,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         fm.beginTransaction().add(R.id.nav_fragment, puzzleFragment, "puzzle").hide(puzzleFragment).commit();
         fm.beginTransaction().add(R.id.nav_fragment, trainingFragment, "training").commit();
         currentFragment = "training";
+    }
+
+    private void createNotificationChannel() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            CharSequence name = getString(R.string.channel_name);
+            String description = getString(R.string.channel_description);
+            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+            NotificationChannel channel = new NotificationChannel("DC", name, importance);
+            channel.setDescription(description);
+            NotificationManager notificationManager = getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channel);
+        }
     }
 
     @Override
