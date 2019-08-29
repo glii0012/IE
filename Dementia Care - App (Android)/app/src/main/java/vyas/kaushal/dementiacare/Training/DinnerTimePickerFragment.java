@@ -42,7 +42,7 @@ public class DinnerTimePickerFragment extends DialogFragment implements TimePick
         String hour = ((hourOfDay < 10) ? ("0" + hourOfDay) : Integer.toString(hourOfDay));
         String minutes = ((minute < 10) ? ("0" + minute) : Integer.toString(minute));
 
-        // Check if Selected Time is Between 6 PM - 9 PM
+        // ToDo: Check if Selected Time is Between 6 PM - 9 PM
 
         Calendar calendar = Calendar.getInstance();
         calendar.set(

@@ -21,10 +21,10 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.Calendar;
 
-import vyas.kaushal.dementiacare.Alarms.LunchAlarm;
+import vyas.kaushal.dementiacare.Alarms.WaterAlarm;
 import vyas.kaushal.dementiacare.R;
 
-public class LunchTimePickerFragment extends DialogFragment implements TimePickerDialog.OnTimeSetListener {
+public class WaterTimePickerFragment extends DialogFragment implements TimePickerDialog.OnTimeSetListener {
 
     @NonNull
     @Override
@@ -42,7 +42,7 @@ public class LunchTimePickerFragment extends DialogFragment implements TimePicke
         String hour = ((hourOfDay < 10) ? ("0" + hourOfDay) : Integer.toString(hourOfDay));
         String minutes = ((minute < 10) ? ("0" + minute) : Integer.toString(minute));
 
-        // ToDo: Check if Selected Time is Between 11 AM - 2 PM
+        // ToDo: Check if Selected Time is Between 9 AM - 9 PM
 
         Calendar calendar = Calendar.getInstance();
         calendar.set(
@@ -53,23 +53,23 @@ public class LunchTimePickerFragment extends DialogFragment implements TimePicke
                 minute,
                 0
         );
-        setLunchAlarm(calendar.getTimeInMillis());
+        setWaterAlarm(calendar.getTimeInMillis());
 
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString("LunchReminder", ("TRAINING TIME - " + hour + ":" + minutes));
+        editor.putString("WaterReminder", ("TRAINING TIME - " + hour + ":" + minutes));
         editor.commit();
 
-        TextView lblLunchReminderTime = getActivity().findViewById(R.id.lbl_lunch_reminder);
-        lblLunchReminderTime.setText("TRAINING TIME - " + hour + ":" + minutes);
+        TextView lblWaterReminderTime = getActivity().findViewById(R.id.lbl_water_reminder);
+        lblWaterReminderTime.setText("TRAINING TIME - " + hour + ":" + minutes);
 
-        FloatingActionButton btnDeleteLunchReminder = getActivity().findViewById(R.id.btn_lunch_delete);
-        btnDeleteLunchReminder.show();
+        FloatingActionButton btnDeleteWaterReminder = getActivity().findViewById(R.id.btn_water_delete);
+        btnDeleteWaterReminder.show();
     }
 
-    private void setLunchAlarm(long timeInMillis) {
+    private void setWaterAlarm(long timeInMillis) {
         AlarmManager alarmManager = (AlarmManager) getContext().getSystemService(Context.ALARM_SERVICE);
-        Intent intent = new Intent(getContext(), LunchAlarm.class);
+        Intent intent = new Intent(getContext(), WaterAlarm.class);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(getContext(), 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
 
         alarmManager.cancel(pendingIntent);

@@ -16,6 +16,7 @@
 
     <string name="training_begin">BEGIN TRAINING</string>
 
+    <string name="notification_water">TIME TO DRINK WATER</string>
     <string name="notification_lunch">IT\'S LUNCH TIME</string>
     <string name="notification_dinner">IT\'S DINNER TIME</string>
 
