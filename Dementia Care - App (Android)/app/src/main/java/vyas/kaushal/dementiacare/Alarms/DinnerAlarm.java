@@ -15,8 +15,8 @@ public class DinnerAlarm extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        Intent lunchIntent = new Intent(context, DinnerActivity.class);
-        lunchIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        Intent dinnerIntent = new Intent(context, DinnerActivity.class);
+        dinnerIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
         Notification notification = new NotificationCompat.Builder(context, "DC")
                 .setSmallIcon(R.drawable.ic_menu_dinner)
@@ -24,8 +24,8 @@ public class DinnerAlarm extends BroadcastReceiver {
                 .build();
 
         NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
-        notificationManager.notify(3, notification);
+        notificationManager.notify(1, notification);
 
-        context.startActivity(lunchIntent);
+        context.startActivity(dinnerIntent);
     }
 }

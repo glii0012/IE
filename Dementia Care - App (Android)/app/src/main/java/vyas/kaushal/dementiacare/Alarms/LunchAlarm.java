@@ -24,7 +24,7 @@ public class LunchAlarm extends BroadcastReceiver {
                 .build();
 
         NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
-        notificationManager.notify(2, notification);
+        notificationManager.notify(1, notification);
 
         context.startActivity(lunchIntent);
     }

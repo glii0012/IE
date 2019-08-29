@@ -67,7 +67,7 @@ public class WaterFragment extends Fragment {
                 cancelWaterAlarm();
 
                 SharedPreferences.Editor editor = sharedPreferences.edit();
-                editor.remove("LunchReminder");
+                editor.remove("WaterReminder");
                 editor.commit();
                 lblReminderTime.setText("NO TRAINING SET");
 

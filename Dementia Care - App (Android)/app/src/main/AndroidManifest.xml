@@ -10,8 +10,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".WaterActivity"></activity>
-        <activity android:name=".DinnerActivity" />
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
@@ -24,13 +22,33 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".WaterActivity"
+            android:label="@string/training_water"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <activity
             android:name=".LunchActivity"
             android:label="@string/training_lunch"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".DinnerActivity"
+            android:label="@string/training_dinner"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
 
         <receiver
+            android:name=".Alarms.WaterAlarm"
+            android:enabled="true"
+            android:exported="true" />
+        <receiver
             android:name=".Alarms.LunchAlarm"
+            android:enabled="true"
+            android:exported="true" />
+        <receiver
+            android:name=".Alarms.DinnerAlarm"
             android:enabled="true"
             android:exported="true" />
     </application>
