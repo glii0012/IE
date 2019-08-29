@@ -77,3 +77,4 @@ C:\Users\akaus\Desktop\Sem 4 Lab\FIT5120\IE Solution\Dementia Care - Web\Dementi
 C:\Users\akaus\Desktop\Sem 4 Lab\FIT5120\IE Solution\Dementia Care - Web\DementiaCare\obj\Debug\DementiaCare.dll
 C:\Users\akaus\Desktop\Sem 4 Lab\FIT5120\IE Solution\Dementia Care - Web\DementiaCare\obj\Debug\DementiaCare.pdb
 C:\Users\akaus\Desktop\Sem 4 Lab\FIT5120\IE Solution\Dementia Care - Web\DementiaCare\bin\Content\Fonts\Aquatico-Regular.otf
+C:\Users\akaus\Desktop\Sem 4 Lab\FIT5120\IE Solution\Dementia Care - Web\DementiaCare\obj\Debug\DementiaCare.csprojAssemblyReference.cache

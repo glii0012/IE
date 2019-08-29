@@ -79,6 +79,11 @@ textarea {
     padding-right: 0px;
 }
 
+.img-down-arrow {
+    height: 30px;
+    width: 30px;
+}
+
 /* Small Devices (Landscape Phones, 576px and Up) */
 @media (min-width: 576px) {
     .full-height {

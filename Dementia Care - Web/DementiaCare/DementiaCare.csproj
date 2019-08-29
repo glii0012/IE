@@ -600,6 +600,7 @@
     <Content Include="Highcharts\themes\sunset.src.js" />
     <Content Include="Images\applogo.png" />
     <Content Include="Images\background.jpg" />
+    <Content Include="Images\downArrow.png" />
     <Content Include="Images\first.jpg" />
     <Content Include="Images\info.jpg" />
     <Content Include="Images\second.jpg" />
