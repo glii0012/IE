@@ -2,23 +2,20 @@
     <string name="app_name">Dementia Care</string>
     <string name="channel_name">DementiaCare</string>
     <string name="channel_description">Notification Channel for Dementia Care</string>
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
 
-    <string name="menu_training">Training</string>
-    <string name="menu_puzzle">Puzzles</string>
-    <string name="menu_ar">AR</string>
+    <string name="func_training">Training</string>
+    <string name="func_puzzle">Puzzles</string>
+    <string name="func_augmented_reality">Augmented Reality</string>
 
-    <string name="training_water">Water</string>
+    <string name="training_info">SET TRAINING TIME</string>
+    <string name="training_water">Drinking Water</string>
     <string name="training_lunch">Lunch</string>
     <string name="training_dinner">Dinner</string>
+    <string name="training_water_full">Drinking Water Training</string>
+    <string name="training_water_info">HOW MANY TIMES A DAY ?</string>
+    <string name="nine_to_nine">09:00 AM - 09:00 PM</string>
+    <string name="training_lunch_full">Lunch Training</string>
+    <string name="training_dinner_full">Dinner Training</string>
 
-    <string name="training_begin">BEGIN TRAINING</string>
-
-    <string name="notification_water">TIME TO DRINK WATER</string>
-    <string name="notification_lunch">IT\'S LUNCH TIME</string>
-    <string name="notification_dinner">IT\'S DINNER TIME</string>
-
-    <string name="text_coming_soon">Coming Soon...</string>
-
+    <string name="coming_soon">Coming Soon...</string>
 </resources>

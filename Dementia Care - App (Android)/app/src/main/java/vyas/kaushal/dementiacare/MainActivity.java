@@ -1,64 +1,87 @@
 package vyas.kaushal.dementiacare;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
-import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBarDrawerToggle;
+import pl.bclogic.pulsator4droid.library.PulsatorLayout;
 
-import com.google.android.material.navigation.NavigationView;
-
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-
-    private DrawerLayout drawer;
-    private NavigationView navigationView;
-
-    private final Fragment trainingFragment = new TrainingFragment();
-    private final Fragment puzzleFragment = new PuzzleFragment();
-    private final Fragment augmentedFragment = new AugmentedFragment();
-    private final FragmentManager fm = getSupportFragmentManager();
-    private String currentFragment;
+public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setTitle(R.string.menu_training);
         getWindow().setStatusBarColor(Color.WHITE);
         setContentView(R.layout.activity_main);
 
         createNotificationChannel();
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        // Pulse Animation
+        PulsatorLayout plTraining = findViewById(R.id.plTraining);
+        plTraining.start();
+        PulsatorLayout plPuzzle = findViewById(R.id.plPuzzle);
+        plPuzzle.start();
+        PulsatorLayout plAugmentedReality = findViewById(R.id.plAugmentedReality);
+        plAugmentedReality.start();
 
-        drawer = findViewById(R.id.drawer_layout);
-        navigationView = findViewById(R.id.nav_view);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
+        // Training Tap Event Listeners
+        ImageView ivTraining = findViewById(R.id.ivTraining);
+        ivTraining.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                navigateToTrainingActivity();
+            }
+        });
+        TextView lblTraining = findViewById(R.id.lblTraining);
+        lblTraining.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                navigateToTrainingActivity();
+            }
+        });
 
-        navigationView.setNavigationItemSelectedListener(this);
-        navigationView.setCheckedItem(R.id.nav_training);
+        // Puzzle Tap Event Listeners
+        ImageView ivPuzzle = findViewById(R.id.ivPuzzle);
+        ivPuzzle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                navigateToPuzzleActivity();
+            }
+        });
+        TextView lblPuzzle = findViewById(R.id.lblPuzzle);
+        lblPuzzle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                navigateToPuzzleActivity();
+            }
+        });
 
-        fm.beginTransaction().add(R.id.nav_fragment, augmentedFragment, "augmented").hide(augmentedFragment).commit();
-        fm.beginTransaction().add(R.id.nav_fragment, puzzleFragment, "puzzle").hide(puzzleFragment).commit();
-        fm.beginTransaction().add(R.id.nav_fragment, trainingFragment, "training").commit();
-        currentFragment = "training";
+        // Augmented Reality Tap Event Listeners
+        ImageView ivAugmentedReality = findViewById(R.id.ivAugmentedReality);
+        ivAugmentedReality.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                navigateToAugmentedRealityActivity();
+            }
+        });
+        TextView lblAugmentedReality = findViewById(R.id.lblAugmentedReality);
+        lblAugmentedReality.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                navigateToAugmentedRealityActivity();
+            }
+        });
     }
 
+    // Create Notification Channel
     private void createNotificationChannel() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             CharSequence name = getString(R.string.channel_name);
@@ -72,60 +95,21 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
     }
 
-    @Override
-    public void onBackPressed() {
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }
+    // Helper Method to Navigate to Training Activity
+    private void navigateToTrainingActivity() {
+        Intent intent = new Intent(this, TrainingActivity.class);
+        startActivity(intent);
     }
 
-    @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-        int id = menuItem.getItemId();
+    // Helper Method to Navigate to Puzzle Activity
+    private void navigateToPuzzleActivity() {
+        Intent intent = new Intent(this, PuzzleActivity.class);
+        startActivity(intent);
+    }
 
-        switch (id) {
-            case R.id.nav_training:
-                if (currentFragment.equals("puzzle")) {
-                    fm.beginTransaction().hide(puzzleFragment).show(trainingFragment).commit();
-                }
-                if (currentFragment.equals("augmented")) {
-                    fm.beginTransaction().hide(augmentedFragment).show(trainingFragment).commit();
-                }
-                setTitle(R.string.menu_training);
-                navigationView.setCheckedItem(R.id.nav_training);
-                currentFragment = "training";
-                break;
-
-            case R.id.nav_puzzles:
-                if (currentFragment.equals("training")) {
-                    fm.beginTransaction().hide(trainingFragment).show(puzzleFragment).commit();
-                }
-                if (currentFragment.equals("augmented")) {
-                    fm.beginTransaction().hide(augmentedFragment).show(puzzleFragment).commit();
-                }
-                setTitle(R.string.menu_puzzle);
-                navigationView.setCheckedItem(R.id.nav_puzzles);
-                currentFragment = "puzzle";
-                break;
-
-            case R.id.nav_ar:
-                if (currentFragment.equals("training")) {
-                    fm.beginTransaction().hide(trainingFragment).show(augmentedFragment).commit();
-                }
-                if (currentFragment.equals("puzzle")) {
-                    fm.beginTransaction().hide(puzzleFragment).show(augmentedFragment).commit();
-                }
-                setTitle(R.string.menu_ar);
-                navigationView.setCheckedItem(R.id.nav_ar);
-                currentFragment = "augmented";
-                break;
-
-            default: break;
-        }
-
-        drawer.closeDrawer(GravityCompat.START);
-        return true;
+    // Helper Method to Navigate to Augmented Reality Activity
+    private void navigateToAugmentedRealityActivity() {
+        Intent intent = new Intent(this, AugmentedRealityActivity.class);
+        startActivity(intent);
     }
 }

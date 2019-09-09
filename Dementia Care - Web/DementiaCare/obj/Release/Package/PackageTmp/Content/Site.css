@@ -1,6 +1,6 @@
 ﻿@font-face {
     font-family: 'CustomFont';
-    src: url('Fonts/Aquatico-Regular.otf');
+    src: url('Fonts/FiraSans-Regular.otf');
 }
 
 html, body {
@@ -29,7 +29,7 @@ textarea {
 }
 
 .calibri-font {
-    font-family: CustomFont;
+    font-family: 'Manjari', sans-serif;
 }
 
 .no-margin {
@@ -77,6 +77,11 @@ textarea {
     padding-bottom: 15px;
     padding-left: 0px;
     padding-right: 0px;
+}
+
+.img-down-arrow {
+    height: 30px;
+    width: 30px;
 }
 
 /* Small Devices (Landscape Phones, 576px and Up) */

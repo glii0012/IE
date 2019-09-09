@@ -1,5 +1,6 @@
 <resources>
 
+    <!-- Base Application Theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light">
         <item name="android:windowLightStatusBar">true</item>
 
@@ -8,13 +9,25 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <!-- White Action Bar Application Theme. -->
+    <style name="WhiteActionBarAppTheme" parent="Theme.AppCompat.Light">
+        <item name="android:windowLightStatusBar">true</item>
+
+        <item name="colorPrimary">@color/colorWhite</item>
+        <item name="colorPrimaryDark">@color/colorWhite</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="YellowTimePickerStyle" parent="@android:style/Widget.Material.TimePicker">
+        <item name="android:headerBackground">@color/googleYellow</item>
+        <item name="android:numbersSelectorColor">@color/googleYellow</item>
+        <item name="android:numbersBackgroundColor">@color/colorLightGrey</item>
+    </style>
+
+    <!-- No Action Bar Application Theme. -->
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
-
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Light" />
-
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 </resources>

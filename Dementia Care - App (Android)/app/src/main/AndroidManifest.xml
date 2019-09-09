@@ -9,45 +9,45 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/WhiteActionBarAppTheme">
         <activity
             android:name=".MainActivity"
-            android:label="@string/app_name"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
-            android:name=".WaterActivity"
-            android:label="@string/training_water"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
+            android:name=".TrainingActivity"
+            android:label="@string/func_training"
+            android:screenOrientation="portrait" />
         <activity
-            android:name=".LunchActivity"
-            android:label="@string/training_lunch"
+            android:name=".PuzzleActivity"
+            android:label="@string/func_puzzle"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".AugmentedRealityActivity"
+            android:label="@string/func_augmented_reality"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Training.WaterActivity"
+            android:label="@string/training_water_full"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Training.FoodActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Alarm.AlarmActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".DinnerActivity"
-            android:label="@string/training_dinner"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
 
         <receiver
-            android:name=".Alarms.WaterAlarm"
+            android:name=".Alarm.WaterTrainingAlarm"
             android:enabled="true"
             android:exported="true" />
         <receiver
-            android:name=".Alarms.LunchAlarm"
-            android:enabled="true"
-            android:exported="true" />
-        <receiver
-            android:name=".Alarms.DinnerAlarm"
+            android:name=".Alarm.FoodTrainingAlarm"
             android:enabled="true"
             android:exported="true" />
     </application>
