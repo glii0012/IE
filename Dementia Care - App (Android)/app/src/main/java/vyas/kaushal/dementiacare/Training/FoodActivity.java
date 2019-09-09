@@ -4,11 +4,13 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlarmManager;
+import android.app.AlertDialog;
 import android.app.PendingIntent;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
@@ -158,6 +160,8 @@ public class FoodActivity extends AppCompatActivity {
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putString("LunchTrainingTime", hour + ":" + minute);
             editor.commit();
+
+            showAlert("Awesome", "Lunch Training Time set Successfully.");
         }
         else if ((foodType.equals("Dinner")) && (selectedHour >= 18) && (selectedHour <= 20) && (selectedMinutes >= 1) && (selectedMinutes <= 59)) {
             intent.putExtra("AlarmType", "Dinner");
@@ -168,9 +172,16 @@ public class FoodActivity extends AppCompatActivity {
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putString("DinnerTrainingTime", hour + ":" + minute);
             editor.commit();
+
+            showAlert("Awesome", "Dinner Training Time set Successfully.");
         }
         else {
-
+            if (foodType.equals("Lunch")) {
+                showAlert("Oops!", "Lunch Time should be between 11:01 AM - 01:59 PM, excluding 12:00 PM & 01:00 PM");
+            }
+            else {
+                showAlert("Oops!", "Dinner Time should be between 06:01 PM - 08:59 PM, excluding 07:00 PM & 08:00 PM");
+            }
         }
     }
 
@@ -195,5 +206,29 @@ public class FoodActivity extends AppCompatActivity {
         }
 
         setTimeSetup();
+    }
+
+    private void showAlert(String title, String message) {
+        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        LayoutInflater inflater = this.getLayoutInflater();
+        View dialogView = inflater.inflate(R.layout.dialog_food, null);
+        builder.setView(dialogView);
+
+        TextView lblTitle = dialogView.findViewById(R.id.lblTitleFood);
+        lblTitle.setText(title);
+        TextView lblMessage = dialogView.findViewById(R.id.lblMessageFood);
+        lblMessage.setText(message);
+
+        final AlertDialog alertDialog = builder.create();
+
+        FloatingActionButton btnOK = dialogView.findViewById(R.id.btnOKFood);
+        btnOK.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.cancel();
+            }
+        });
+
+        alertDialog.show();
     }
 }
