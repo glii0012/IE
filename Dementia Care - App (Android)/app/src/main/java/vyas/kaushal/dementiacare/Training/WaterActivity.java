@@ -33,6 +33,8 @@ public class WaterActivity extends AppCompatActivity {
     private FloatingActionButton btnRemoveWaterTime;
     private TextView lblNumberOfTimes;
 
+    private SharedPreferences sharedPreferences;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,7 +46,7 @@ public class WaterActivity extends AppCompatActivity {
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setHomeButtonEnabled(true);
 
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         String waterTrainingTime = sharedPreferences.getString("WaterTrainingTime", "0");
 
         // Pulse Animation
@@ -59,7 +61,7 @@ public class WaterActivity extends AppCompatActivity {
         btnSixTimes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setSixTimesADay();
+                setWaterTime(6);
             }
         });
 
@@ -67,43 +69,28 @@ public class WaterActivity extends AppCompatActivity {
         btnTwelveTimes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setTwelveTimesADay();
+                setWaterTime(12);
             }
         });
 
         btnRemoveWaterTime = findViewById(R.id.btnRemoveWaterTime);
         btnRemoveWaterTime.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                removeWaterTrainingTime();
+            public void onClick(View v) { removeWaterTrainingTime();
             }
         });
 
         lblNumberOfTimes = findViewById(R.id.lblNumberOfTimes);
 
         if (waterTrainingTime.equals("0")) {
-            plRemoveWaterTime.setVisibility(View.INVISIBLE);
-            btnRemoveWaterTime.hide();
-            lblNumberOfTimes.setText("");
+            setWaterTimeSetup();
         }
         else if (waterTrainingTime.equals("6")) {
-            plSixTimes.setVisibility(View.INVISIBLE);
-            plTwelveTimes.setVisibility(View.INVISIBLE);
-            btnSixTimes.hide();
-            btnTwelveTimes.hide();
-
-            plRemoveWaterTime.setVisibility(View.VISIBLE);
-            btnRemoveWaterTime.show();
+            setRemoveSetup();
             lblNumberOfTimes.setText("EVERY 2 HOURS");
         }
         else {
-            plSixTimes.setVisibility(View.INVISIBLE);
-            plTwelveTimes.setVisibility(View.INVISIBLE);
-            btnSixTimes.hide();
-            btnTwelveTimes.hide();
-
-            plRemoveWaterTime.setVisibility(View.VISIBLE);
-            btnRemoveWaterTime.show();
+            setRemoveSetup();
             lblNumberOfTimes.setText("EVERY HOUR");
         }
     }
@@ -120,24 +107,40 @@ public class WaterActivity extends AppCompatActivity {
         }
     }
 
-    private void setSixTimesADay() {
-        setDailyWaterAlarm();
-        lblNumberOfTimes.setText("EVERY 2 HOURS");
+    private void setWaterTimeSetup() {
+        plSixTimes.setVisibility(View.VISIBLE);
+        plTwelveTimes.setVisibility(View.VISIBLE);
+        btnSixTimes.show();
+        btnTwelveTimes.show();
 
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString("WaterTrainingTime", "6");
-        editor.putString("WaterTrainingFirstTimeDay", "True");
-        editor.commit();
+        plRemoveWaterTime.setVisibility(View.INVISIBLE);
+        btnRemoveWaterTime.hide();
+        lblNumberOfTimes.setText("");
     }
 
-    private void setTwelveTimesADay() {
-        setDailyWaterAlarm();
-        lblNumberOfTimes.setText("EVERY HOUR");
+    private void setRemoveSetup() {
+        plSixTimes.setVisibility(View.INVISIBLE);
+        plTwelveTimes.setVisibility(View.INVISIBLE);
+        btnSixTimes.hide();
+        btnTwelveTimes.hide();
 
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        plRemoveWaterTime.setVisibility(View.VISIBLE);
+        btnRemoveWaterTime.show();
+    }
+
+    private void setWaterTime(int timesADay) {
+        setDailyWaterAlarm();
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString("WaterTrainingTime", "12");
+
+        if (timesADay == 6) {
+            lblNumberOfTimes.setText("EVERY 2 HOURS");
+            editor.putString("WaterTrainingTime", "6");
+        }
+        else {
+            lblNumberOfTimes.setText("EVERY HOUR");
+            editor.putString("WaterTrainingTime", "12");
+        }
+
         editor.putString("WaterTrainingFirstTimeDay", "True");
         editor.commit();
     }
@@ -159,13 +162,7 @@ public class WaterActivity extends AppCompatActivity {
 
         alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);
 
-        plSixTimes.setVisibility(View.INVISIBLE);
-        plTwelveTimes.setVisibility(View.INVISIBLE);
-        btnSixTimes.hide();
-        btnTwelveTimes.hide();
-
-        plRemoveWaterTime.setVisibility(View.VISIBLE);
-        btnRemoveWaterTime.show();
+        setRemoveSetup();
     }
 
     private void removeWaterTrainingTime() {
@@ -177,16 +174,8 @@ public class WaterActivity extends AppCompatActivity {
         pendingIntent = PendingIntent.getBroadcast(this, 1, intent, PendingIntent.FLAG_UPDATE_CURRENT);
         alarmManager.cancel(pendingIntent);
 
-        plSixTimes.setVisibility(View.VISIBLE);
-        plTwelveTimes.setVisibility(View.VISIBLE);
-        btnSixTimes.show();
-        btnTwelveTimes.show();
+        setWaterTimeSetup();
 
-        plRemoveWaterTime.setVisibility(View.INVISIBLE);
-        btnRemoveWaterTime.hide();
-        lblNumberOfTimes.setText("");
-
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.remove("WaterTrainingTime");
         editor.remove("WaterTrainingFirstTimeDay");
