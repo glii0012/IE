@@ -4,7 +4,7 @@
     <string name="channel_description">Notification Channel for Dementia Care</string>
 
     <string name="func_training">Training</string>
-    <string name="func_puzzle">Puzzles</string>
+    <string name="func_puzzle">Puzzle &amp; Game</string>
     <string name="func_augmented_reality">Augmented Reality</string>
 
     <string name="training_info">SET TRAINING TIME</string>
@@ -17,5 +17,8 @@
     <string name="training_lunch_full">Lunch Training</string>
     <string name="training_dinner_full">Dinner Training</string>
 
-    <string name="coming_soon">Coming Soon...</string>
+    <string name="puzzle_image">Puzzle</string>
+    <string name="puzzle_game">Memory Game</string>
+
+    <string name="ar_selfie">Selfie</string>
 </resources>

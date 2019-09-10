@@ -1,5 +1,6 @@
 package vyas.kaushal.dementiacare;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.NotificationChannel;
@@ -21,6 +22,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getWindow().setStatusBarColor(Color.WHITE);
         setContentView(R.layout.activity_main);
+
+        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        getSupportActionBar().setCustomView(R.layout.appbar_title_centre);
 
         createNotificationChannel();
 
@@ -68,15 +72,13 @@ public class MainActivity extends AppCompatActivity {
         ImageView ivAugmentedReality = findViewById(R.id.ivAugmentedReality);
         ivAugmentedReality.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                navigateToAugmentedRealityActivity();
+            public void onClick(View v) { navigateToAugmentedRealityActivity();
             }
         });
         TextView lblAugmentedReality = findViewById(R.id.lblAugmentedReality);
         lblAugmentedReality.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                navigateToAugmentedRealityActivity();
+            public void onClick(View v) { navigateToAugmentedRealityActivity();
             }
         });
     }

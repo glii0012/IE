@@ -6,15 +6,101 @@
     android:layout_height="match_parent"
     tools:context=".PuzzleActivity">
 
-    <TextView
-        android:id="@+id/lblComingSoon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/coming_soon"
-        android:textColor="@android:color/black"
-        android:textSize="36sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <pl.bclogic.pulsator4droid.library.PulsatorLayout
+        android:id="@+id/plImagePuzzle"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginBottom="50dp"
+        android:layout_marginLeft="50dp"
+        app:pulse_count="4"
+        app:pulse_duration="1800"
+        app:pulse_repeat="0"
+        app:pulse_color="@color/googleGreen"
+        app:pulse_startFromScratch="false"
+        app:pulse_interpolator="Linear"
+        app:layout_constraintBottom_toTopOf="@id/divider_guideline"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/ivImagePuzzle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="3dp"
+        android:contentDescription="@string/puzzle_image"
+        app:layout_constraintBottom_toTopOf="@id/lblImagePuzzle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed"
+        app:srcCompat="@drawable/image_puzzle" />
+
+    <TextView
+        android:id="@+id/lblImagePuzzle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:text="@string/puzzle_image"
+        android:textColor="@android:color/black"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@id/divider_guideline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivImagePuzzle" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/divider_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <pl.bclogic.pulsator4droid.library.PulsatorLayout
+        android:id="@+id/plGamePuzzle"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginBottom="50dp"
+        android:layout_marginLeft="50dp"
+        app:pulse_count="4"
+        app:pulse_duration="1800"
+        app:pulse_repeat="0"
+        app:pulse_color="@color/googleGreen"
+        app:pulse_startFromScratch="false"
+        app:pulse_interpolator="Linear"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/divider_guideline" />
+
+    <ImageView
+        android:id="@+id/ivGamePuzzle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="3dp"
+        android:contentDescription="@string/puzzle_game"
+        app:layout_constraintBottom_toTopOf="@id/lblGamePuzzle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider_guideline"
+        app:layout_constraintVertical_chainStyle="packed"
+        app:srcCompat="@drawable/memory_game" />
+
+    <TextView
+        android:id="@+id/lblGamePuzzle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:text="@string/puzzle_game"
+        android:textColor="@android:color/black"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivGamePuzzle" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

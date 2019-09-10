@@ -6,6 +6,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import pl.bclogic.pulsator4droid.library.PulsatorLayout;
 
 public class AugmentedRealityActivity extends AppCompatActivity {
 
@@ -18,6 +23,25 @@ public class AugmentedRealityActivity extends AppCompatActivity {
         assert actionBar != null;
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setHomeButtonEnabled(true);
+
+        // Pulse Animation
+        PulsatorLayout plARSelfie = findViewById(R.id.plARSelfie);
+        plARSelfie.start();
+
+        ImageView ivARSelfie = findViewById(R.id.ivARSelfie);
+        ivARSelfie.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                navigateToARSelfie();
+            }
+        });
+        TextView lblARSelfie = findViewById(R.id.lblARSelfie);
+        lblARSelfie.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                navigateToARSelfie();
+            }
+        });
     }
 
     @Override
@@ -29,5 +53,9 @@ public class AugmentedRealityActivity extends AppCompatActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    private void navigateToARSelfie() {
+
     }
 }
