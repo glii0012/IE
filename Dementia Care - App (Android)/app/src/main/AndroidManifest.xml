@@ -42,11 +42,15 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
+            android:name=".Puzzle.GameActivity"
+            android:label="@string/puzzle_game"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".AugmentedReality.SelfieActivity"
-            android:label="@string/ar_selfie"
             android:configChanges="orientation|screenSize"
-            android:screenOrientation="locked"
-            android:exported="true" />
+            android:exported="true"
+            android:label="@string/ar_selfie"
+            android:screenOrientation="locked" />
 
         <!--
          This tag indicates that this application requires ARCore. This results in the
