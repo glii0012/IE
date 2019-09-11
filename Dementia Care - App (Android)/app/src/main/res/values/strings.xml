@@ -19,7 +19,7 @@
 
     <string name="puzzle_image">Puzzle</string>
     <string name="puzzle_game">Memory Game</string>
-    <string name="game_remember">REMEMBER</string>
+    <string name="game_image">Game Image</string>
 
     <string name="ar_selfie">Selfie</string>
 </resources>
