@@ -41,6 +41,21 @@
             android:name=".Alarm.AlarmActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".AugmentedReality.SelfieActivity"
+            android:label="@string/ar_selfie"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="locked"
+            android:exported="true" />
+
+        <!--
+         This tag indicates that this application requires ARCore. This results in the
+          application only being visible in the Google Play Store on devices that support
+          ARCore.
+        -->
+        <meta-data
+            android:name="com.google.ar.core"
+            android:value="required" />
 
         <receiver
             android:name=".Alarm.WaterTrainingAlarm"
@@ -51,6 +66,13 @@
             android:enabled="true"
             android:exported="true" />
     </application>
+
+    <!-- This tag indicates that this application requires ARCore. This results in the application only being visible in the Google Play Store on devices that support ARCore. -->
+    <uses-feature
+        android:name="android.hardware.camera.ar"
+        android:required="true" />
+
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <dist:module dist:instant="true" />
 

@@ -3,6 +3,7 @@ package vyas.kaushal.dementiacare;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -11,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import pl.bclogic.pulsator4droid.library.PulsatorLayout;
+import vyas.kaushal.dementiacare.AugmentedReality.SelfieActivity;
 
 public class AugmentedRealityActivity extends AppCompatActivity {
 
@@ -56,6 +58,7 @@ public class AugmentedRealityActivity extends AppCompatActivity {
     }
 
     private void navigateToARSelfie() {
-
+        Intent intent = new Intent(this, SelfieActivity.class);
+        startActivity(intent);
     }
 }
