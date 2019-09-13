@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import pl.bclogic.pulsator4droid.library.PulsatorLayout;
 import vyas.kaushal.dementiacare.Puzzle.GameActivity;
+import vyas.kaushal.dementiacare.Puzzle.JigsawActivity;
 
 public class PuzzleActivity extends AppCompatActivity {
 
@@ -74,8 +75,10 @@ public class PuzzleActivity extends AppCompatActivity {
         }
     }
 
+    // Helper Method to Navigate to Jigsaw Activity
     private void navigateToImagePuzzle() {
-
+        Intent intent = new Intent(this, JigsawActivity.class);
+        startActivity(intent);
     }
 
     // Helper Method to Navigate to Game Activity

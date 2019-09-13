@@ -4,8 +4,12 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.os.VibrationEffect;
+import android.os.Vibrator;
+import android.speech.tts.TextToSpeech;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -16,11 +20,14 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Locale;
 
 import pl.bclogic.pulsator4droid.library.PulsatorLayout;
 import vyas.kaushal.dementiacare.R;
 
 public class GameActivity extends AppCompatActivity {
+
+    private TextToSpeech textToSpeech;
 
     private ArrayList<Integer> blockList;
     private ArrayList<Integer> selectedBlockList;
@@ -50,6 +57,7 @@ public class GameActivity extends AppCompatActivity {
     private TextView lblTimer;
 
     private int correctFind;
+    private CountDownTimer rememberTimer;
     private CountDownTimer gameTimer;
 
     @Override
@@ -61,6 +69,8 @@ public class GameActivity extends AppCompatActivity {
         assert actionBar != null;
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setHomeButtonEnabled(true);
+
+        setUpTextToSpeech();
 
         lblRememberInfo = findViewById(R.id.lblRememberInfo);
 
@@ -152,6 +162,42 @@ public class GameActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    protected void onDestroy() {
+        rememberTimer.cancel();
+        if (gameTimer != null) {
+            gameTimer.cancel();
+        }
+
+        if (textToSpeech != null) {
+            textToSpeech.stop();
+            textToSpeech.shutdown();
+        }
+
+        super.onDestroy();
+    }
+
+    private void setUpTextToSpeech() {
+        textToSpeech = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
+            @Override
+            public void onInit(int status) {
+                if (status == TextToSpeech.SUCCESS) {
+                    int ttsLang = textToSpeech.setLanguage(Locale.ENGLISH);
+
+                    if (ttsLang == TextToSpeech.LANG_MISSING_DATA
+                            || ttsLang == TextToSpeech.LANG_NOT_SUPPORTED) {
+                        //Log.e("TTS", "The Language is not supported!");
+                    } else {
+                        //Log.i("TTS", "Language Supported.");
+                    }
+                    //Log.i("TTS", "Initialization success.");
+                } else {
+                    //Toast.makeText(getApplicationContext(), "TTS Initialization failed!", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+    }
+
     private void addBlocksToList() {
         blockList.add(R.drawable.block1);
         blockList.add(R.drawable.block2);
@@ -184,7 +230,7 @@ public class GameActivity extends AppCompatActivity {
         ivFourthBlock.setImageResource(selectedBlockList.get(3));
         hideFindComponents();
 
-        new CountDownTimer(11000, 1000) {
+        rememberTimer = new CountDownTimer(11000, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
                 lblTimer.setText("" + (millisUntilFinished / 1000));
@@ -198,6 +244,7 @@ public class GameActivity extends AppCompatActivity {
     }
 
     private void startFinding() {
+        textToSpeech.speak("Start Finding", TextToSpeech.QUEUE_FLUSH, null, "0");
         correctFind = 0;
         Collections.shuffle(gameBlockList);
         ivFirstTap.setImageResource(gameBlockList.get(0));
@@ -224,9 +271,22 @@ public class GameActivity extends AppCompatActivity {
 
     private void checkIfCorrect(ImageView iv, int index, PulsatorLayout pl) {
         if (selectedBlockList.contains(gameBlockList.get(index))) {
+            textToSpeech.speak("Correct", TextToSpeech.QUEUE_FLUSH, null, "1");
+
             correctFind++;
             pl.setVisibility(View.INVISIBLE);
             iv.setVisibility(View.INVISIBLE);
+        }
+        else {
+            textToSpeech.speak("Incorrect", TextToSpeech.QUEUE_FLUSH, null, "2");
+
+            Vibrator vibrator = (Vibrator) getSystemService(this.VIBRATOR_SERVICE);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                vibrator.vibrate(VibrationEffect.createOneShot(500, VibrationEffect.DEFAULT_AMPLITUDE));
+            }
+            else {
+                vibrator.vibrate(5000);
+            }
         }
 
         if (correctFind == 4) {

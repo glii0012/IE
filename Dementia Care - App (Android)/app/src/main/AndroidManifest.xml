@@ -42,6 +42,10 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
+            android:name=".Puzzle.JigsawActivity"
+            android:label="@string/puzzle_image"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".Puzzle.GameActivity"
             android:label="@string/puzzle_game"
             android:screenOrientation="portrait" />
@@ -76,7 +80,9 @@
         android:name="android.hardware.camera.ar"
         android:required="true" />
 
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.VIBRATE" />
 
     <dist:module dist:instant="true" />
 
