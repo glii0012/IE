@@ -19,6 +19,9 @@
 
     <string name="puzzle_image">Puzzle</string>
     <string name="puzzle_game">Memory Game</string>
+    <string name="game_difficulty">Difficulty</string>
+    <string name="difficulty_easy">AMATEUR</string>
+    <string name="difficulty_hard">NIGHTMARE</string>
     <string name="game_image">Game Image</string>
 
     <string name="ar_selfie">Selfie</string>

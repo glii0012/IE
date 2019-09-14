@@ -21,11 +21,15 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Locale;
+import java.util.Random;
 
 import pl.bclogic.pulsator4droid.library.PulsatorLayout;
 import vyas.kaushal.dementiacare.R;
 
 public class GameActivity extends AppCompatActivity {
+
+    private String[] responses = {"Correct", "Awesome", "You'r on a roll", "Great"};
+    private int streak = 0;
 
     private TextToSpeech textToSpeech;
 
@@ -57,6 +61,8 @@ public class GameActivity extends AppCompatActivity {
     private TextView lblTimer;
 
     private int correctFind;
+    private int firstTimer;
+    private int secondTimer;
     private CountDownTimer rememberTimer;
     private CountDownTimer gameTimer;
 
@@ -69,6 +75,9 @@ public class GameActivity extends AppCompatActivity {
         assert actionBar != null;
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setHomeButtonEnabled(true);
+
+        firstTimer = getIntent().getIntExtra("rememberTimer", 11000);
+        secondTimer = getIntent().getIntExtra("findTimer", 16000);
 
         setUpTextToSpeech();
 
@@ -229,8 +238,9 @@ public class GameActivity extends AppCompatActivity {
         ivThirdBlock.setImageResource(selectedBlockList.get(2));
         ivFourthBlock.setImageResource(selectedBlockList.get(3));
         hideFindComponents();
+        lblTimer.setTextSize(60);
 
-        rememberTimer = new CountDownTimer(11000, 1000) {
+        rememberTimer = new CountDownTimer(firstTimer, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
                 lblTimer.setText("" + (millisUntilFinished / 1000));
@@ -244,6 +254,7 @@ public class GameActivity extends AppCompatActivity {
     }
 
     private void startFinding() {
+        lblTimer.setTextSize(46);
         textToSpeech.speak("Start Finding", TextToSpeech.QUEUE_FLUSH, null, "0");
         correctFind = 0;
         Collections.shuffle(gameBlockList);
@@ -256,7 +267,7 @@ public class GameActivity extends AppCompatActivity {
 
         hideRememberComponents();
 
-        gameTimer = new CountDownTimer(16000, 1000) {
+        gameTimer = new CountDownTimer(secondTimer, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
                 lblTimer.setText("" + (millisUntilFinished / 1000));
@@ -264,6 +275,7 @@ public class GameActivity extends AppCompatActivity {
 
             @Override
             public void onFinish() {
+                streak = 0;
                 showAlert("Oops!", "Your time is Up. Please, try again.");
             }
         }.start();
@@ -271,14 +283,15 @@ public class GameActivity extends AppCompatActivity {
 
     private void checkIfCorrect(ImageView iv, int index, PulsatorLayout pl) {
         if (selectedBlockList.contains(gameBlockList.get(index))) {
-            textToSpeech.speak("Correct", TextToSpeech.QUEUE_FLUSH, null, "1");
+            String word = responses[new Random().nextInt(4)];
+            textToSpeech.speak(word, TextToSpeech.QUEUE_FLUSH, null, "1");
 
             correctFind++;
             pl.setVisibility(View.INVISIBLE);
             iv.setVisibility(View.INVISIBLE);
         }
         else {
-            textToSpeech.speak("Incorrect", TextToSpeech.QUEUE_FLUSH, null, "2");
+            textToSpeech.speak("Ohh No", TextToSpeech.QUEUE_FLUSH, null, "2");
 
             Vibrator vibrator = (Vibrator) getSystemService(this.VIBRATOR_SERVICE);
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -290,13 +303,15 @@ public class GameActivity extends AppCompatActivity {
         }
 
         if (correctFind == 4) {
+            streak++;
+            lblRememberInfo.setText("CURRENT STREAK: " + streak);
             gameTimer.cancel();
             showAlert("Congratulations", "You Successfully found all Blocks.");
         }
     }
 
     private void hideRememberComponents() {
-        lblRememberInfo.setText("START FINDING");
+        lblRememberInfo.setText("CURRENT STREAK: " + streak);
 
         ivFirstBlock.setVisibility(View.INVISIBLE);
         ivSecondBlock.setVisibility(View.INVISIBLE);

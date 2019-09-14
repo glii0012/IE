@@ -21,13 +21,17 @@ import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
 
+import pl.bclogic.pulsator4droid.library.PulsatorLayout;
 import vyas.kaushal.dementiacare.R;
 
 import static java.lang.Math.abs;
@@ -41,6 +45,9 @@ public class JigsawActivity extends AppCompatActivity {
 
     private RelativeLayout rlPuzzleImage;
     private ImageView ivPuzzleImage;
+
+    private PulsatorLayout plRefresh;
+    private FloatingActionButton btnRefresh;
 
     private ArrayList<PuzzlePiece> pieces;
 
@@ -56,6 +63,25 @@ public class JigsawActivity extends AppCompatActivity {
 
         rlPuzzleImage = findViewById(R.id.rlPuzzleImage);
         ivPuzzleImage = findViewById(R.id.ivPuzzleImage);
+
+        plRefresh = findViewById(R.id.plRefresh);
+        plRefresh.start();
+        btnRefresh = findViewById(R.id.btnRefresh);
+
+        plRefresh.setVisibility(View.INVISIBLE);
+        btnRefresh.hide();
+
+        btnRefresh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                rlPuzzleImage.removeAllViews();
+                pieces.clear();
+                plRefresh.setVisibility(View.INVISIBLE);
+                btnRefresh.hide();
+
+                getImageFromGallery();
+            }
+        });
 
         getImageFromGallery();
     }
@@ -288,7 +314,8 @@ public class JigsawActivity extends AppCompatActivity {
 
     public void checkGameOver() {
         if (isGameOver()) {
-            finish();
+            plRefresh.setVisibility(View.VISIBLE);
+            btnRefresh.show();
         }
     }
 
