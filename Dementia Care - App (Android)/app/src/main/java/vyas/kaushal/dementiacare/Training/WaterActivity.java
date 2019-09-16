@@ -33,6 +33,8 @@ public class WaterActivity extends AppCompatActivity {
     private FloatingActionButton btnSixTimes;
     private FloatingActionButton btnTwelveTimes;
     private FloatingActionButton btnRemoveWaterTime;
+    private TextView lbl6Times;
+    private TextView lbl12Times;
     private TextView lblNumberOfTimes;
 
     private SharedPreferences sharedPreferences;
@@ -58,6 +60,9 @@ public class WaterActivity extends AppCompatActivity {
         plTwelveTimes.start();
         plRemoveWaterTime = findViewById(R.id.plRemoveWaterTime);
         plRemoveWaterTime.start();
+
+        lbl6Times = findViewById(R.id.lbl6Times);
+        lbl12Times = findViewById(R.id.lbl12Times);
 
         btnSixTimes = findViewById(R.id.btnSixTimes);
         btnSixTimes.setOnClickListener(new View.OnClickListener() {
@@ -114,6 +119,8 @@ public class WaterActivity extends AppCompatActivity {
         plTwelveTimes.setVisibility(View.VISIBLE);
         btnSixTimes.show();
         btnTwelveTimes.show();
+        lbl6Times.setVisibility(View.VISIBLE);
+        lbl12Times.setVisibility(View.VISIBLE);
 
         plRemoveWaterTime.setVisibility(View.INVISIBLE);
         btnRemoveWaterTime.hide();
@@ -125,6 +132,8 @@ public class WaterActivity extends AppCompatActivity {
         plTwelveTimes.setVisibility(View.INVISIBLE);
         btnSixTimes.hide();
         btnTwelveTimes.hide();
+        lbl6Times.setVisibility(View.INVISIBLE);
+        lbl12Times.setVisibility(View.INVISIBLE);
 
         plRemoveWaterTime.setVisibility(View.VISIBLE);
         btnRemoveWaterTime.show();
