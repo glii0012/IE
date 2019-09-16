@@ -79,9 +79,37 @@ textarea {
     padding-right: 0px;
 }
 
+.question-position {
+    bottom: 0px;
+}
+
+.img-anchor {
+    display: none;
+}
+
 .img-down-arrow {
+    display: block;
+    margin: auto;
     height: 30px;
     width: 30px;
+}
+
+.img-anchor-text {
+    display: block;
+    margin: auto;
+    width: 30px;
+}
+
+.img-down-arrow-text {
+    display: block;
+    margin: auto;
+    height: 30px;
+    width: 30px;
+}
+
+.quiz-dimension {
+    display: block;
+    margin: auto;
 }
 
 /* Small Devices (Landscape Phones, 576px and Up) */
@@ -165,10 +193,8 @@ textarea {
     }
 
     .img-center {
-        padding-top: 40px;
-        padding-left: 40px;
-        display: inline;
-        margin: 0;
+        display: block;
+        margin: auto;
         width: 360px;
     }
 
@@ -183,6 +209,23 @@ textarea {
         width: 100%;
         height: auto;
         padding: 30px;
+    }
+
+    .question-position {
+        top: 250px;
+    }
+
+    .img-anchor {
+        display: block;
+        margin: auto;
+        width: 50px;
+    }
+
+    .img-down-arrow {
+        display: block;
+        margin: auto;
+        height: 50px;
+        width: 50px;
     }
 }
 
@@ -199,10 +242,8 @@ textarea {
     }
 
     .img-center {
-        padding-top: 50px;
-        padding-left: 50px;
-        display: inline;
-        margin: 0;
+        display: block;
+        margin: auto;
         width: 360px;
     }
 
@@ -217,5 +258,22 @@ textarea {
         width: 100%;
         height: auto;
         padding: 30px;
+    }
+
+    .question-position {
+        top: 250px;
+    }
+
+    .img-anchor {
+        display: block;
+        margin: auto;
+        width: 50px;
+    }
+
+    .img-down-arrow {
+        display: block;
+        margin: auto;
+        height: 50px;
+        width: 50px;
     }
 }

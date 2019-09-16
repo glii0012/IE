@@ -3,22 +3,149 @@
 }
 
 <div class="container-fluid no-padding">
-    <div class="row no-margin">
+    <div class="row no-margin" id="section1">
         <div class="col-12 no-padding full-height">
             <img src="~/Images/background.jpg" class="img-fit" alt="Dementia Care" />
 
             <div class="sticky-top abs-position full-width">
-                <img src="~/Images/title.png" class="img-center" alt="" />
+                <div class="container-fluid no-padding">
+                    <div class="row no-margin">
+                        <div class="col-lg-4 no-padding">
+                            <img src="~/Images/title.png" class="img-center" alt="" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="abs-position full-width question-position">
+                <div class="container-fluid no-padding">
+                    <div class="row no-margin">
+                        <div class="col-lg-4 no-padding" style="background: rgba(255,255,255,0.75);">
+                            <h4 class="text-dark text-break text-center calibri-font" style="padding-top: 12px; padding-bottom: 12px; margin: 0;">
+                                Does your family member suffer from dementia?
+                                <br />
+                                OR
+                                <br />
+                                Do you have trouble looking after them?
+                            </h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="abs-position full-width" style="bottom: 10px;">
+                <a href="#section2" class="img-anchor">
+                    <img src="~/Images/downArrow.png" class="img-down-arrow" alt="" />
+                </a>
             </div>
         </div>
     </div>
+
+    <div class="row no-margin" id="section2">
+        <div class="col-12 no-padding">
+            <div class="card bg-dark" style="border:0px; border-radius: 0px;">
+                <div class="card-text">
+                    <h4 class="text-white text-break text-center calibri-font dc-margin-padding">
+                        Welcome to Dementia Care!
+                    </h4>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @*<div class="row no-margin">
+            <div class="col-12 no-padding">
+                <div class="card bg-dark" style="border:0px; border-radius: 0px;">
+                    <div class="card-text">
+                        <h4 class="text-white text-break text-center calibri-font dc-margin-padding">
+                            At present, there are 400,833 elders living with dementia in Australia and this number is projected to reach
+                            1.1 million people by 2056. Majority of this people – approximately 75% - live in community homes and 90% of
+                            them are cared by family members (spouse/children), where most patients need self-care assistance.
+                        </h4>
+                    </div>
+                </div>
+            </div>
+        </div>*@
+
+    <div class="row no-margin">
+        <div class="col-lg-6 patients-chart">
+            <div id="assistanceChart" class="calibri-font"></div>
+        </div>
+        <div class="col-lg-6 patients-chart">
+            <div id="carerChart" class="calibri-font"></div>
+        </div>
+    </div>
+
     <div class="row no-margin">
         <div class="col-12 no-padding">
             <div class="card bg-dark" style="border:0px; border-radius: 0px;">
                 <div class="card-text">
                     <h4 class="text-white text-break text-center calibri-font dc-margin-padding">
-                        Dementia is a major health problem in Australia. It has profound consequences for the health and quality of
-                        life of people with the condition, as well as for their families and friends.
+                        SOLUTION
+                        <br />
+                        The application aims to make life easier for elderly patients, recently diagnosed with dementia &amp; alzheimer&rsquo;s.
+                        The application has following main features.
+                        <br />
+                        <br />
+                        <a href="#section3" class="img-anchor-text">
+                            <img src="~/Images/downArrow.png" class="img-down-arrow-text" alt="" />
+                        </a>
+                    </h4>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row no-margin" id="section3">
+        <div class="col-lg-4 no-padding">
+            <div class="card" style="border: 0px; border-radius:0px;">
+                <img src="~/Images/first.jpg" class="card-img-top" style="border-radius:0px;" alt="Stimulus" />
+                <div class="card-body">
+                    <h4 class="card-title calibri-font">CLASSICAL CONDITIONING</h4>
+                    <p class="text-break calibri-font text-justify" style="margin: 0;">
+                        The application enables the user to train himself/herself to do daily tasks such as drink water and
+                        eat meals on time without being dependent on a carer.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 no-padding">
+            <div class="card" style="border: 0px; border-radius:0px;">
+                <img src="~/Images/second.jpg" class="card-img-top" style="border-radius:0px;" alt="Stimulus" />
+                <div class="card-body">
+                    <h4 class="card-title calibri-font">PUZZLES &amp; GAMES</h4>
+                    <p class="text-break calibri-font text-justify" style="margin: 0;">
+                        The application has memory games to keep the user’s brains sharp and puzzles where the user can
+                        interact with photos and relive old memories.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 no-padding">
+            <div class="card" style="border: 0px; border-radius:0px;">
+                <img src="~/Images/third.jpg" class="card-img-top" style="border-radius:0px;" alt="Stimulus" />
+                <div class="card-body">
+                    <h4 class="card-title calibri-font">AUGMENTED REALITY</h4>
+                    <p class="text-break calibri-font text-justify" style="margin: 0;">
+                        The application will also let patients and their carer to interact with 3-D AR objects so that
+                        they are able to enjoy themselves and spend quality time together.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row no-margin card" style="border-left: 0px; border-right: 0px; border-radius: 0px;">
+        <div class="quiz-dimension">
+            <div id="interact-5d7fd235919c3c00149f7476"></div>
+        </div>
+    </div>
+
+    <div class="row no-margin">
+        <div class="col-12 no-padding">
+            <div class="card bg-dark" style="border:0px; border-radius: 0px;">
+                <div class="card-text">
+                    <h4 class="text-white text-break text-center calibri-font dc-margin-padding">
+                        The reason this application was developed was due to the staggering prevalence of dementia.
                     </h4>
                 </div>
             </div>
@@ -29,82 +156,7 @@
             <div id="dementiaPopulationChart" class="calibri-font"></div>
         </div>
     </div>
-    <div class="row no-margin">
-        <div class="col-12 no-padding">
-            <div class="card bg-dark" style="border:0px; border-radius: 0px;">
-                <div class="card-text">
-                    <h4 class="text-white text-break text-center calibri-font dc-margin-padding">
-                        At present, there are 400,833 elders living with dementia in Australia and this number is projected to reach
-                        1.1 million people by 2056. Majority of this people – approximately 75% - live in community homes and 90% of
-                        them are cared by family members (spouse/children), where most patients need self-care assistance.
-                    </h4>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row no-margin">
-        <div class="col-lg-6 patients-chart">
-            <div id="assistanceChart" class="calibri-font"></div>
-        </div>
-        <div class="col-lg-6 patients-chart">
-            <div id="carerChart" class="calibri-font"></div>
-        </div>
-    </div>
-    <div class="row no-margin">
-        <div class="col-12 no-padding">
-            <div class="card bg-dark" style="border:0px; border-radius: 0px;">
-                <div class="card-text">
-                    <h4 class="text-white text-break text-center calibri-font dc-margin-padding">
-                        Our aim is to provide a solution that makes life easier not only for recently diagnosed dementia patients but
-                        also for carers who are part of their daily lives.
-                        <br /><br />
-                        | IT for Social Good |
-                    </h4>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row no-margin">
-        <div class="col-lg-4 no-padding">
-            <div class="card" style="border: 0px; border-radius:0px;">
-                <img src="~/Images/first.jpg" class="card-img-top" style="border-radius:0px;" alt="Stimulus" />
-                <div class="card-body">
-                    <h4 class="card-title calibri-font">STIMULUS (PAVLOVIAN THEORY)</h4>
-                    <p class="text-break calibri-font text-justify">
-                        Pavlovian theory is a learning procedure that involves pairing a stimulus with a conditioned response. Our
-                        solution involves training patients minds to an external stimulus with a preconditioned involuntary cognitive
-                        response. Stimulation include - Being hydrated, having meals and medicine on time.
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-4 no-padding">
-            <div class="card" style="border: 0px; border-radius:0px;">
-                <img src="~/Images/second.jpg" class="card-img-top" style="border-radius:0px;" alt="Stimulus" />
-                <div class="card-body">
-                    <h4 class="card-title calibri-font">PUZZLE</h4>
-                    <p class="text-break calibri-font text-justify">
-                        Another part of our solution includes patients solving puzzles, where solution of puzzles is an image/picture
-                        uploaded/selected by carers. The benefit is trying to make patients remember old memories and initiate
-                        conversation between patient and carer.
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-4 no-padding">
-            <div class="card" style="border: 0px; border-radius:0px;">
-                <img src="~/Images/third.jpg" class="card-img-top" style="border-radius:0px;" alt="Stimulus" />
-                <div class="card-body">
-                    <h4 class="card-title calibri-font">AUGMENTED REALITY</h4>
-                    <p class="text-break calibri-font text-justify">
-                        Lastly, we try creating fun and lively interaction between patients and carers with the use of AR technology.
-                        We use 3D AR objects and place it into real world using smart devices, which are interactable. This will help
-                        create new memories for family members and friends.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
+
     <div class="row no-margin">
         <div class="col-12 no-padding">
             <div class="card" style="border-left: 0px; border-right: 0px; border-radius: 0px;">
@@ -118,12 +170,53 @@
                 <div class="card-text">
                     <h4 class="text-white text-break text-center calibri-font dc-margin-padding">
                         DEVELOPED &amp; DESIGNED BY AUG.life
+                        <br />
+                        | IT for Social Good |
                     </h4>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+    var app_5d7fd235919c3c00149f7476;
+    (function (d, t) {
+        var s = d.createElement(t),
+            options = {
+                "appId": "5d7fd235919c3c00149f7476", "async": true,
+                "host": "quiz.tryinteract.com", "footer": "show"
+            };
+        s.src = 'https://i.tryinteract.com/embed/app.js';
+        s.onload = s.onreadystatechange = function () {
+            var rs = this.readyState; if (rs) if (rs != 'complete') if (rs != 'loaded') return;
+            try {
+                app_5d7fd235919c3c00149f7476 = new InteractApp(); app_5d7fd235919c3c00149f7476.initialize(options);
+                app_5d7fd235919c3c00149f7476.display();
+            } catch (e) { }
+        };
+        var scr = d.getElementsByTagName(t)[0], par = scr.parentNode; par.insertBefore(s, scr);
+    })(document, 'script');
+</script>
+
+<script>
+    $(document).ready(function () {
+        $("a").on('click', function (event) {
+
+            if (this.hash !== "") {
+                event.preventDefault();
+
+                var hash = this.hash;
+
+                $('html, body').animate({
+                    scrollTop: $(hash).offset().top
+                }, 800, function () {
+
+                });
+            }
+        });
+    });
+</script>
 
 <script type="text/javascript">
     Highcharts.chart('dementiaPopulationChart', {
