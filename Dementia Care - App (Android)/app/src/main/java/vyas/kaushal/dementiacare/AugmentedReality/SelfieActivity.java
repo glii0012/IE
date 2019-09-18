@@ -5,8 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.Toast;
+import android.view.View;
+import android.widget.ImageView;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.ar.core.AugmentedFace;
 import com.google.ar.core.TrackingState;
 import com.google.ar.sceneform.ArSceneView;
@@ -22,6 +24,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
+import pl.bclogic.pulsator4droid.library.PulsatorLayout;
 import vyas.kaushal.dementiacare.R;
 
 public class SelfieActivity extends AppCompatActivity {
@@ -32,6 +35,10 @@ public class SelfieActivity extends AppCompatActivity {
 
     private final HashMap<AugmentedFace, AugmentedFaceNode> faceNodeMap = new HashMap<>();
 
+    private PulsatorLayout plCamera;
+    private ImageView ivSelfie;
+    private boolean takePicture = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +48,11 @@ public class SelfieActivity extends AppCompatActivity {
         assert actionBar != null;
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setHomeButtonEnabled(true);
+
+        plCamera = findViewById(R.id.plCamera);
+        plCamera.start();
+        ivSelfie = findViewById(R.id.ivSelfie);
+        ivSelfie.setVisibility(View.INVISIBLE);
 
         arFragment = (FaceArFragment) getSupportFragmentManager().findFragmentById(R.id.facesFragment);
 
@@ -68,7 +80,6 @@ public class SelfieActivity extends AppCompatActivity {
                     }
 
                     Collection<AugmentedFace> faceList =                           sceneView.getSession().getAllTrackables(AugmentedFace.class);
-                    System.out.println(faceList.size());
 
                     // Make new AugmentedFaceNodes for any New Faces.
                     for (AugmentedFace face : faceList) {
@@ -94,6 +105,19 @@ public class SelfieActivity extends AppCompatActivity {
                     }
                 }
         );
+
+        FloatingActionButton btnCamera = findViewById(R.id.btnCamera);
+        btnCamera.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sceneView.pause();
+
+                plCamera.setVisibility(View.INVISIBLE);
+                btnCamera.hide();
+
+                takePicture = true;
+            }
+        });
     }
 
     @Override

@@ -22,4 +22,47 @@
             android:layout_height="match_parent" />
     </FrameLayout>
 
+    <pl.bclogic.pulsator4droid.library.PulsatorLayout
+        android:id="@+id/plCamera"
+        android:layout_width="0dp"
+        android:layout_height="190dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="15dp"
+        android:layout_marginLeft="15dp"
+        app:pulse_count="4"
+        app:pulse_duration="1800"
+        app:pulse_repeat="0"
+        app:pulse_color="@color/googleGreen"
+        app:pulse_startFromScratch="false"
+        app:pulse_interpolator="Linear"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btnCamera"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="80dp"
+        android:backgroundTint="@color/googleGreen"
+        android:clickable="true"
+        android:focusable="true"
+        android:tint="@color/colorWhite"
+        app:borderWidth="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/ic_action_camera" />
+
+    <ImageView
+        android:id="@+id/ivSelfie"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:contentDescription="@string/ar_selfie"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

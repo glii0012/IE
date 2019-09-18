@@ -41,4 +41,9 @@ public class FaceArFragment extends ArFragment {
 
         return frameLayout;
     }
+
+    @Override
+    protected void onWindowFocusChanged(boolean hasFocus) {
+        //super.onWindowFocusChanged(hasFocus);
+    }
 }
