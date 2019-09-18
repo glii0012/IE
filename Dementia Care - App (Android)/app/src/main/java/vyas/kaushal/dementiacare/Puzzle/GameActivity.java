@@ -32,6 +32,7 @@ public class GameActivity extends AppCompatActivity {
 
     private String[] responses = {"Correct", "Awesome", "You'r on a roll", "Great"};
     private int streak = 0;
+    private int incorrectChoice = 0;
 
     private TextToSpeech textToSpeech;
 
@@ -259,6 +260,7 @@ public class GameActivity extends AppCompatActivity {
         lblTimer.setTextSize(46);
         textToSpeech.speak("Start Finding", TextToSpeech.QUEUE_FLUSH, null, "0");
         correctFind = 0;
+        incorrectChoice = 0;
         Collections.shuffle(gameBlockList);
         ivFirstTap.setImageResource(gameBlockList.get(0));
         ivSecondTap.setImageResource(gameBlockList.get(1));
@@ -301,6 +303,18 @@ public class GameActivity extends AppCompatActivity {
             }
             else {
                 vibrator.vibrate(5000);
+            }
+
+            if (firstTimer == 11000) {
+                incorrectChoice++;
+                if (incorrectChoice == 3) {
+                    gameTimer.cancel();
+                    showAlert("Oops!", "You choose an Incorrect Block 3 times.");
+                }
+            }
+            else {
+                gameTimer.cancel();
+                showAlert("Oops!", "You choose an Incorrect Block.");
             }
         }
 
