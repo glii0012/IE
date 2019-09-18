@@ -1,15 +1,18 @@
 package vyas.kaushal.dementiacare.Training;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlarmManager;
 import android.app.AlertDialog;
 import android.app.PendingIntent;
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.speech.RecognizerIntent;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -18,7 +21,9 @@ import android.widget.TimePicker;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Locale;
 
 import pl.bclogic.pulsator4droid.library.PulsatorLayout;
 import vyas.kaushal.dementiacare.Alarm.FoodTrainingAlarm;
@@ -29,6 +34,7 @@ public class FoodActivity extends AppCompatActivity {
     private PulsatorLayout plFoodTime;
     private PulsatorLayout plRemoveFoodTime;
     private FloatingActionButton btnAddFoodTime;
+    private FloatingActionButton btnSpeech;
     private FloatingActionButton btnRemoveFoodTime;
     private TimePicker tpFood;
     private TextView lblSetFoodTime;
@@ -61,7 +67,24 @@ public class FoodActivity extends AppCompatActivity {
         btnAddFoodTime.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setFoodTrainingTime();
+                setFoodTrainingTime(0, 0);
+            }
+        });
+
+        btnSpeech = findViewById(R.id.btnSpeech);
+        btnSpeech.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+                intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
+                intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.ENGLISH);
+                intent.putExtra(RecognizerIntent.EXTRA_PROMPT, "Hello, What training time you want to set?");
+
+                try {
+                    startActivityForResult(intent, 5);
+                } catch (ActivityNotFoundException a) {
+
+                }
             }
         });
 
@@ -105,6 +128,55 @@ public class FoodActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if ((resultCode == RESULT_OK) && (null != data)) {
+            boolean isBreak = false;
+            ArrayList<String> results = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
+            for (String eachSentence : results) {
+                String[] words = eachSentence.split(" ");
+                for (String word : words) {
+                    if (word.contains(":")) {
+                        try {
+                            String[] hoursAndMinutes = word.split(":");
+                            int hour = Integer.parseInt(hoursAndMinutes[0]);
+                            int minutes = Integer.parseInt(hoursAndMinutes[1]);
+
+                            if (foodType.equals("Lunch")) {
+                                if (hour == 1)
+                                    hour = 13;
+                            } else {
+                                if (hour == 6)
+                                    hour = 18;
+                                else if (hour == 7)
+                                    hour = 19;
+                                else if (hour == 8)
+                                    hour = 20;
+                            }
+
+                            setFoodTrainingTime(hour, minutes);
+                        } catch (Exception ex) {
+                            if (foodType.equals("Lunch")) {
+                                showAlert("Oops!", "Lunch Time should be between 11:01 AM - 01:59 PM, excluding 12:00 PM & 01:00 PM");
+                            } else {
+                                showAlert("Oops!", "Dinner Time should be between 06:01 PM - 08:59 PM, excluding 07:00 PM & 08:00 PM");
+                            }
+                        }
+
+                        isBreak = true;
+                        break;
+                    }
+                }
+
+                if (isBreak) {
+                    break;
+                }
+            }
+        }
+    }
+
     private void setTimeSetup() {
         tpFood.setVisibility(View.VISIBLE);
         if (foodType.equals("Lunch")) {
@@ -116,6 +188,7 @@ public class FoodActivity extends AppCompatActivity {
         tpFood.setMinute(1);
         plFoodTime.setVisibility(View.VISIBLE);
         btnAddFoodTime.show();
+        btnSpeech.show();
         plRemoveFoodTime.setVisibility(View.INVISIBLE);
         btnRemoveFoodTime.hide();
         lblSetFoodTime.setText("");
@@ -125,14 +198,19 @@ public class FoodActivity extends AppCompatActivity {
         tpFood.setVisibility(View.INVISIBLE);
         plFoodTime.setVisibility(View.INVISIBLE);
         btnAddFoodTime.hide();
+        btnSpeech.hide();
         plRemoveFoodTime.setVisibility(View.VISIBLE);
         btnRemoveFoodTime.show();
         lblSetFoodTime.setText("TRAINING AT - " + hoursAndMinutes[0] + ":" + hoursAndMinutes[1]);
     }
 
-    private void setFoodTrainingTime() {
-        int selectedHour = tpFood.getHour();
-        int selectedMinutes = tpFood.getMinute();
+    private void setFoodTrainingTime(int voiceHour, int voiceMinute) {
+        int selectedHour = voiceHour;
+        int selectedMinutes = voiceMinute;
+        if (selectedHour == 0) {
+            selectedHour = tpFood.getHour();
+            selectedMinutes = tpFood.getMinute();
+        }
 
         Calendar calendar = Calendar.getInstance();
         calendar.set(

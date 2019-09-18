@@ -131,7 +131,7 @@ public class JigsawActivity extends AppCompatActivity {
             // Randomize position, at the Bottom of the Screen.
             RelativeLayout.LayoutParams lParams = (RelativeLayout.LayoutParams) piece.getLayoutParams();
             lParams.leftMargin = new Random().nextInt(rlPuzzleImage.getWidth() - (piece.pieceWidth + 20));
-            lParams.topMargin = rlPuzzleImage.getHeight() - (piece.pieceHeight + ((new Random().nextInt(5) + 1) * 15));
+            lParams.topMargin = rlPuzzleImage.getHeight() - (piece.pieceHeight + ((new Random().nextInt(5) + 1) * 25));
             piece.setLayoutParams(lParams);
         }
     }
