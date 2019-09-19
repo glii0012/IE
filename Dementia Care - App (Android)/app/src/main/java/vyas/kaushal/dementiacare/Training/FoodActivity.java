@@ -134,6 +134,8 @@ public class FoodActivity extends AppCompatActivity {
 
         if ((resultCode == RESULT_OK) && (null != data)) {
             boolean isBreak = false;
+            boolean isAlert = false;
+
             ArrayList<String> results = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
             for (String eachSentence : results) {
                 String[] words = eachSentence.split(" ");
@@ -158,11 +160,8 @@ public class FoodActivity extends AppCompatActivity {
 
                             setFoodTrainingTime(hour, minutes);
                         } catch (Exception ex) {
-                            if (foodType.equals("Lunch")) {
-                                showAlert("Oops!", "Lunch Time should be between 11:01 AM - 01:59 PM, excluding 12:00 PM & 01:00 PM");
-                            } else {
-                                showAlert("Oops!", "Dinner Time should be between 06:01 PM - 08:59 PM, excluding 07:00 PM & 08:00 PM");
-                            }
+                            isAlert = true;
+                            showAlert("Oops!", "Sorry, I didn't get you.");
                         }
 
                         isBreak = true;
@@ -173,6 +172,10 @@ public class FoodActivity extends AppCompatActivity {
                 if (isBreak) {
                     break;
                 }
+            }
+
+            if ((!isBreak) && (!isAlert)) {
+                showAlert("Oops!", "Sorry, I didn't get you.");
             }
         }
     }
